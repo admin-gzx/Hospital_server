@@ -21,3 +21,8 @@ mybatis-plus:
 logging:
   level:
     com.hospital.user.mapper: debug
+
+# JWT配置
+app:
+  jwtSecret: Y2xpZW50X2tleV9zaG9ydF9zZWNyZXQ=
+  jwtExpirationInMs: 86400000

@@ -1,6 +1,7 @@
 package com.hospital.user.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -75,6 +76,13 @@ public class User {
      * 关联到角色表的主键
      */
     private Long roleId;
+
+    /**
+     * 角色信息
+     * 非数据库字段，用于存储关联的角色信息
+     */
+    @TableField(exist = false)
+    private Role role;
 
     /**
      * 创建时间
