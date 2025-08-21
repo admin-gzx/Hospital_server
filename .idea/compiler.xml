@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="hospital-gateway" />
+        <module name="hospital-common" />
+        <module name="hospital-config" />
+        <module name="hospital-registry" />
+        <module name="hospital-user" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="hospital-common" options="-parameters" />
+      <module name="hospital-config" options="-parameters" />
+      <module name="hospital-gateway" options="-parameters" />
+      <module name="hospital-registry" options="-parameters" />
+      <module name="hospital-user" options="-parameters" />
+    </option>
+  </component>
+</project>

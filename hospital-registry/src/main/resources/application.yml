@@ -1,0 +1,21 @@
+server:
+  port: 8848
+
+spring:
+  application:
+    name: hospital-registry
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+# 配置Nacos的认证信息
+nacos:
+  security:
+    enabled: false
+
+# 配置日志
+logging:
+  level:
+    root: info
+    com.hospital: debug

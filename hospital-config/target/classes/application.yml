@@ -1,0 +1,21 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: hospital-config
+  cloud:
+    nacos:
+      config:
+        server-addr: localhost:8848
+        file-extension: yml
+        namespace: hospital-config
+        group: DEFAULT_GROUP
+      discovery:
+        server-addr: localhost:8848
+
+# 配置日志
+logging:
+  level:
+    root: info
+    com.hospital: debug
