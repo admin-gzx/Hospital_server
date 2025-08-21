@@ -1,0 +1,38 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: hospital-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    gateway:
+      routes:
+        - id: hospital-user
+          uri: lb://hospital-user
+          predicates:
+            - Path=/api/user/**
+          filters:
+            - StripPrefix=1
+
+        - id: hospital-patient
+          uri: lb://hospital-patient
+          predicates:
+            - Path=/api/patient/**
+          filters:
+            - StripPrefix=1
+
+        - id: hospital-registration
+          uri: lb://hospital-registration
+          predicates:
+            - Path=/api/registration/**
+          filters:
+            - StripPrefix=1
+
+# 配置日志
+logging:
+  level:
+    root: info
+    com.hospital: debug
