@@ -10,6 +10,8 @@ spring:
         group: DEFAULT_GROUP
       discovery:
         server-addr: localhost:8848
+        # 注意：确保Nacos服务器已启动在8848端口
+        # 若Nacos服务器使用不同端口，请修改此处
 
 # 配置日志
 logging:
