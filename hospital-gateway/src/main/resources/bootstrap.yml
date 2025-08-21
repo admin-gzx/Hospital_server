@@ -6,7 +6,7 @@ spring:
       config:
         server-addr: localhost:8848
         file-extension: yml
-        namespace: hospital-config
+        namespace: hospital-gateway
         group: DEFAULT_GROUP
       discovery:
         server-addr: localhost:8848

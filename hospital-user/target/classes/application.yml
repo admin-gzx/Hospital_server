@@ -2,6 +2,19 @@ server:
   port: 8081
 
 spring:
+  config:
+    import: optional:nacos:hospital-user.yml
+  application:
+    name: hospital-user
+  cloud:
+    nacos:
+      config:
+        server-addr: localhost:8848
+        file-extension: yml
+        namespace: hospital-user
+        group: DEFAULT_GROUP
+      discovery:
+        server-addr: localhost:8848
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/hospital_user?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8

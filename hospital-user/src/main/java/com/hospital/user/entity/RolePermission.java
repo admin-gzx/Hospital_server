@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
  * 角色权限关联实体类
  * 映射到数据库表 sys_role_permission
  * 用于存储角色和权限的多对多关系
- * 通过该关联表实现RBAC（基于角色的访问控制）模型
  */
 @Data
 @TableName("sys_role_permission")

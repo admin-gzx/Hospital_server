@@ -4,8 +4,19 @@ server:
 spring:
   application:
     name: hospital-gateway
+  main:
+    web-application-type: reactive
+    # 排除数据源自动配置
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+  config:
+    import: 'optional:nacos:hospital-gateway.yml'
   cloud:
     nacos:
+      config:
+        server-addr: localhost:8848
+        file-extension: yml
+        namespace: hospital-gateway
+        group: DEFAULT_GROUP
       discovery:
         server-addr: localhost:8848
     gateway:

@@ -4,6 +4,9 @@ server:
 spring:
   application:
     name: hospital-config
+  config:
+    import:
+      - optional:nacos:hospital-config.yml
   cloud:
     nacos:
       config:
