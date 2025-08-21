@@ -4,7 +4,7 @@ REM ==============================================
 REM Nacos服务器和项目服务启动脚本
 REM ==============================================
 
-SET NACOS_HOME=D:\nacos\bin
+SET NACOS_HOME=D:\software\nacos\nacos\bin
 SET PROJECT_HOME=D:\github项目\Hospital_server
 
 REM 检查Nacos服务器是否已启动

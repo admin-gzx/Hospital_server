@@ -15,8 +15,8 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * 用户服务实现类
- * 继承自MyBatis-Plus的ServiceImpl
- * 实现UserService接口定义的业务逻辑
+ * 继承自MyBatis-Plus的ServiceImpl，提供用户相关的业务逻辑实现
+ * 实现UserService接口定义的业务逻辑，包括用户查询、状态更新、缓存管理等
  */
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
@@ -39,6 +39,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     /**
      * 根据用户名查询用户
+     * 优先从Redis缓存中获取，缓存未命中则从数据库查询并存入缓存
      * @param username 用户名
      * @return 用户对象，如果不存在则返回null
      */
@@ -64,6 +65,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     /**
      * 更新用户状态
+     * 更新数据库中的用户状态，并清除Redis缓存以保证数据一致性
      * @param id 用户ID
      * @param status 状态(0:禁用,1:启用)
      * @return 是否更新成功
@@ -88,6 +90,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     /**
      * 重写父类方法，添加缓存逻辑
+     * 保存用户信息到数据库，并清除Redis缓存以保证数据一致性
+     * @param user 用户对象
+     * @return 是否保存成功
      */
     @Override
     public boolean save(User user) {
@@ -101,6 +106,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     /**
      * 重写父类方法，添加缓存逻辑
+     * 更新用户信息到数据库，并清除Redis缓存以保证数据一致性
+     * @param user 用户对象
+     * @return 是否更新成功
      */
     @Override
     public boolean updateById(User user) {
@@ -114,6 +122,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     /**
      * 重写父类方法，添加缓存逻辑
+     * 从数据库删除用户，并清除Redis缓存以保证数据一致性
+     * @param id 用户ID
+     * @return 是否删除成功
      */
     @Override
     public boolean removeById(Serializable id) {

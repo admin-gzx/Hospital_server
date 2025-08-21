@@ -10,7 +10,8 @@ import java.time.LocalDateTime;
 /**
  * 权限实体类
  * 映射到数据库表 sys_permission
- * 用于存储系统中的权限信息
+ * 用于存储系统中的权限信息，支持细粒度的权限控制
+ * 包括菜单级和按钮级权限，支持权限树结构
  */
 @Data
 @TableName("sys_permission")
