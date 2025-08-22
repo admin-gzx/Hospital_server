@@ -23,7 +23,7 @@ spring:
   redis:
     host: localhost
     port: 6379
-    password: 123456
+    # password: 
 
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
@@ -34,6 +34,15 @@ mybatis-plus:
 logging:
   level:
     com.hospital.user.mapper: debug
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
 
 # JWT配置
 app:

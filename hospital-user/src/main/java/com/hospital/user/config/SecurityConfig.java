@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -55,17 +56,13 @@ public class SecurityConfig {
      */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-            // 关闭CSRF
-            .csrf().disable()
-            // 不使用session
+        http.cors().and().csrf().disable()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
-            // 配置URL访问权限
             .authorizeRequests()
-            // 登录接口允许匿名访问
-            .antMatchers("/api/auth/login").anonymous()
-            // 其他所有接口需要认证
+            .antMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
+            .antMatchers("/actuator/**").permitAll()
+            .antMatchers("/api/user/test-redis").permitAll()
             .anyRequest().authenticated();
 
         // 添加JWT过滤器

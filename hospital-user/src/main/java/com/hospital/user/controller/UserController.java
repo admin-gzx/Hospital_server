@@ -2,6 +2,7 @@ package com.hospital.user.controller;
 
 import com.hospital.user.entity.User;
 import com.hospital.user.service.UserService;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -22,6 +23,9 @@ public class UserController {
      */
     @Resource
     private UserService userService;
+    
+    @Resource
+    private StringRedisTemplate stringRedisTemplate;
 
     /**
      * 获取所有用户
@@ -91,5 +95,20 @@ public class UserController {
     @DeleteMapping("/{id}")
     public boolean deleteUser(@PathVariable Long id) {
         return userService.removeById(id);
+    }
+    
+    /**
+     * 测试Redis连接
+     * @return 是否连接成功
+     */
+    @GetMapping("/test-redis")
+    public String testRedis() {
+        try {
+            stringRedisTemplate.opsForValue().set("test-key", "test-value");
+            String value = stringRedisTemplate.opsForValue().get("test-key");
+            return "Redis连接成功: " + value;
+        } catch (Exception e) {
+            return "Redis连接失败: " + e.getMessage();
+        }
     }
 }

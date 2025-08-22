@@ -1,6 +1,8 @@
 spring:
   application:
     name: hospital-gateway
+  config:
+    import: optional:nacos:hospital-gateway.yml
   cloud:
     nacos:
       config:
@@ -8,6 +10,8 @@ spring:
         file-extension: yml
         namespace: hospital-gateway
         group: DEFAULT_GROUP
+        import-check:
+          enabled: false
       discovery:
         server-addr: localhost:8848
 

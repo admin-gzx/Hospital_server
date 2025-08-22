@@ -1,66 +1,81 @@
 @echo off
 
 REM ==============================================
-REM Nacos服务器和项目服务启动脚本
+REM Nacos Server and Project Services Startup Script
 REM ==============================================
 
 SET NACOS_HOME=D:\software\nacos\nacos\bin
 SET PROJECT_HOME=D:\github项目\Hospital_server
 
-REM 检查Nacos服务器是否已启动
-echo 检查Nacos服务器状态...
+REM Check if Nacos server is already running
+echo Checking Nacos server status...
 netstat -ano | findstr :8848
 if %ERRORLEVEL% EQU 0 (
-    echo Nacos服务器已在端口8848运行
+    echo Nacos server is already running on port 8848
 ) else (
-    echo Nacos服务器未运行，正在启动...
+    echo Nacos server is not running, starting...
     start "Nacos Server" cmd /k "cd %NACOS_HOME% && startup.cmd -m standalone"
-    echo 等待Nacos服务器启动...
+    echo Waiting for Nacos server to start...
     timeout /t 10 /nobreak >nul
 )
 
-REM 验证Nacos服务器是否可访问
-echo 验证Nacos服务器连接...
+REM Verify Nacos server connectivity
+echo Verifying Nacos server connection...
 curl -s http://localhost:8848/nacos/v1/console/health/readiness
 if %ERRORLEVEL% EQU 0 (
-    echo Nacos服务器连接成功
+    echo Nacos server connection successful
 ) else (
-    echo Nacos服务器连接失败，请检查Nacos安装和启动情况
+    echo Nacos server connection failed, please check Nacos installation and startup
     pause
     exit /b 1
 )
 
-REM 启动项目服务
-REM 注意：请按照正确顺序启动服务: registry -> config -> gateway -> user -> 其他业务服务
+REM Start project services
+REM Note: Please start services in the correct order: registry -> config -> gateway -> user -> other business services
 
-REM 启动hospital-registry服务
+REM Start hospital-registry service
 start "hospital-registry" cmd /k "cd %PROJECT_HOME%\hospital-registry && mvn spring-boot:run"
 
-echo 等待hospital-registry服务启动...
+echo Waiting for hospital-registry service to start...
 timeout /t 15 /nobreak >nul
 
-REM 启动hospital-config服务
+REM Start hospital-config service
 start "hospital-config" cmd /k "cd %PROJECT_HOME%\hospital-config && mvn spring-boot:run"
 
-echo 等待hospital-config服务启动...
+echo Waiting for hospital-config service to start...
 timeout /t 10 /nobreak >nul
 
-REM 启动hospital-gateway服务
+REM Start hospital-gateway service
 start "hospital-gateway" cmd /k "cd %PROJECT_HOME%\hospital-gateway && mvn spring-boot:run"
 
-echo 等待hospital-gateway服务启动...
+echo Waiting for hospital-gateway service to start...
 timeout /t 10 /nobreak >nul
 
-REM 启动hospital-user服务
+REM Start hospital-user service
 start "hospital-user" cmd /k "cd %PROJECT_HOME%\hospital-user && mvn spring-boot:run"
 
-REM 显示服务启动完成信息
-echo 所有服务启动命令已执行，请检查各窗口的启动状态
+echo Waiting for hospital-user service to start...
+timeout /t 10 /nobreak >nul
 
-echo 验证服务是否注册到Nacos:
- echo 1. 打开浏览器访问: http://localhost:8848/nacos
- echo 2. 登录(用户名/密码: nacos/nacos)
- echo 3. 在左侧菜单选择"服务管理"->"服务列表"
- echo 4. 检查服务是否已注册
+REM Start hospital-patient service
+start "hospital-patient" cmd /k "cd %PROJECT_HOME%\hospital-patient && mvn spring-boot:run"
+
+echo Waiting for hospital-patient service to start...
+timeout /t 10 /nobreak >nul
+
+REM Start hospital-registration service
+start "hospital-registration" cmd /k "cd %PROJECT_HOME%\hospital-registration && mvn spring-boot:run"
+
+echo Waiting for hospital-registration service to start...
+timeout /t 10 /nobreak >nul
+
+REM Display service startup completion message
+echo All service startup commands have been executed, please check the startup status in each window
+
+echo To verify services are registered in Nacos:
+echo 1. Open browser and visit: http://localhost:8848/nacos
+echo 2. Login (username/password: nacos/nacos)
+echo 3. Select "Service Management" -> "Service List" in the left menu
+echo 4. Check if services are registered
 
 pause

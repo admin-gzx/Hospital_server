@@ -4,12 +4,11 @@ server:
 spring:
   application:
     name: hospital-gateway
+  config:
+    import: optional:nacos:hospital-gateway.yml
   main:
     web-application-type: reactive
-    # 排除数据源自动配置
     exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
-  config:
-    import: 'optional:nacos:hospital-gateway.yml'
   cloud:
     nacos:
       config:
@@ -42,7 +41,18 @@ spring:
           filters:
             - StripPrefix=1
 
-# 配置日志
+        - id: hospital-user-auth
+          uri: lb://hospital-user
+          predicates:
+            - Path=/api/auth/**
+          filters:
+            - StripPrefix=1
+
+        - id: hospital-user-actuator
+          uri: lb://hospital-user
+          predicates:
+            - Path=/actuator/**
+
 logging:
   level:
     root: info

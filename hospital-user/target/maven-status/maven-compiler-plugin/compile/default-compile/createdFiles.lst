@@ -9,9 +9,11 @@ com\hospital\user\controller\AuthController$LoginRequest.class
 com\hospital\user\service\impl\RoleServiceImpl.class
 com\hospital\user\util\JwtTokenProvider.class
 com\hospital\user\config\RedisConfig.class
+com\hospital\user\config\DataInitializer.class
 com\hospital\user\controller\UserController.class
 com\hospital\user\filter\JwtAuthenticationFilter.class
 com\hospital\user\service\RedisService.class
+com\hospital\user\DatabaseTest.class
 com\hospital\user\entity\Permission.class
 com\hospital\user\service\impl\CustomUserDetailsService.class
 com\hospital\user\service\UserService.class
@@ -20,3 +22,4 @@ com\hospital\user\entity\RolePermission.class
 com\hospital\user\mapper\UserMapper.class
 com\hospital\user\service\impl\UserServiceImpl.class
 com\hospital\user\entity\Role.class
+com\hospital\user\DatabaseSchemaTest.class
