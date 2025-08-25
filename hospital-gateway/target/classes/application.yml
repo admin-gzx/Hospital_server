@@ -45,8 +45,6 @@ spring:
           uri: lb://hospital-user
           predicates:
             - Path=/api/auth/**
-          filters:
-            - StripPrefix=1
 
         - id: hospital-user-actuator
           uri: lb://hospital-user

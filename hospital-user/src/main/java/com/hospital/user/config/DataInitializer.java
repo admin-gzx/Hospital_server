@@ -35,6 +35,7 @@ public class DataInitializer implements CommandLineRunner {
             User admin = new User();
             admin.setUsername("admin");
             admin.setPassword(passwordEncoder.encode("123456"));
+log.info("加密后的管理员密码: {}", admin.getPassword());
             admin.setRealName("管理员");
             admin.setDepartment("IT");
             admin.setPosition("系统管理员");

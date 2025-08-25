@@ -3,16 +3,20 @@ spring:
     name: hospital-user
   cloud:
     nacos:
-      config:
-        server-addr: localhost:8848
-        file-extension: yml
-        namespace: hospital-user
-        group: DEFAULT_GROUP
       discovery:
         server-addr: localhost:8848
-
-# 配置日志
-logging:
-  level:
-    root: info
-    com.hospital: debug
+        namespace: public
+      config:
+        server-addr: localhost:8848
+        namespace: public
+        file-extension: yml
+        group: DEFAULT_GROUP
+  redis:
+    host: localhost
+    port: 6379
+    timeout: 5000ms
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
