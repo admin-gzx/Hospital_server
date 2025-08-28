@@ -1,7 +1,6 @@
 D:\github项目\Hospital_server\hospital-user\src\main\java\com\hospital\user\controller\AuthController.java
 D:\github项目\Hospital_server\hospital-user\src\main\java\com\hospital\user\entity\RolePermission.java
 D:\github项目\Hospital_server\hospital-user\src\main\java\com\hospital\user\UserApplication.java
-D:\github项目\Hospital_server\hospital-user\src\main\java\com\hospital\user\DatabaseTest.java
 D:\github项目\Hospital_server\hospital-user\src\main\java\com\hospital\user\service\UserService.java
 D:\github项目\Hospital_server\hospital-user\src\main\java\com\hospital\user\filter\JwtAuthenticationFilter.java
 D:\github项目\Hospital_server\hospital-user\src\main\java\com\hospital\user\mapper\RoleMapper.java
@@ -20,5 +19,4 @@ D:\github项目\Hospital_server\hospital-user\src\main\java\com\hospital\user\se
 D:\github项目\Hospital_server\hospital-user\src\main\java\com\hospital\user\config\RestTemplateConfig.java
 D:\github项目\Hospital_server\hospital-user\src\main\java\com\hospital\user\entity\Permission.java
 D:\github项目\Hospital_server\hospital-user\src\main\java\com\hospital\user\service\impl\CustomUserDetailsService.java
-D:\github项目\Hospital_server\hospital-user\src\main\java\com\hospital\user\DatabaseSchemaTest.java
 D:\github项目\Hospital_server\hospital-user\src\main\java\com\hospital\user\service\RoleService.java
