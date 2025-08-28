@@ -19,4 +19,5 @@ D:\github项目\Hospital_server\hospital-user\src\main\java\com\hospital\user\se
 D:\github项目\Hospital_server\hospital-user\src\main\java\com\hospital\user\config\RestTemplateConfig.java
 D:\github项目\Hospital_server\hospital-user\src\main\java\com\hospital\user\entity\Permission.java
 D:\github项目\Hospital_server\hospital-user\src\main\java\com\hospital\user\service\impl\CustomUserDetailsService.java
+D:\github项目\Hospital_server\hospital-user\src\main\java\com\hospital\user\test\PasswordTest.java
 D:\github项目\Hospital_server\hospital-user\src\main\java\com\hospital\user\service\RoleService.java
