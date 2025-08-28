@@ -57,6 +57,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
         // 存入缓存，有效期1小时
         if (user != null) {
+            // 为了避免Redis序列化问题，将role字段设置为null
+            user.setRole(null);
             redisService.set(cacheKey, user, 1, TimeUnit.HOURS);
         }
 
