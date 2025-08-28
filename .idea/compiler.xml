@@ -6,8 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="hospital-gateway" />
+        <module name="hospital-patient" />
         <module name="hospital-common" />
+        <module name="hospital-gateway" />
+        <module name="hospital-registration" />
         <module name="hospital-config" />
         <module name="hospital-registry" />
         <module name="hospital-user" />
@@ -19,6 +21,8 @@
       <module name="hospital-common" options="-parameters" />
       <module name="hospital-config" options="-parameters" />
       <module name="hospital-gateway" options="-parameters" />
+      <module name="hospital-patient" options="-parameters" />
+      <module name="hospital-registration" options="-parameters" />
       <module name="hospital-registry" options="-parameters" />
       <module name="hospital-user" options="-parameters" />
     </option>

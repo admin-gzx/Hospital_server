@@ -1,0 +1,107 @@
+# Maven构建工具生成的文件和目录
+# 忽略所有target目录，但保留特定的wrapper文件
+target/
+!.mvn/wrapper/maven-wrapper.jar
+# 保留src/main和src/test目录下的target文件夹
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# Spring Tool Suite (STS) IDE相关文件
+# 忽略STS生成的配置文件和目录
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+# IntelliJ IDEA IDE相关文件
+# 忽略整个IDEA配置目录和项目文件
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# NetBeans IDE相关文件
+# 忽略NetBeans生成的私有配置和构建目录
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+# 保留src/main和src/test目录下的build文件夹
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# Visual Studio Code IDE相关文件
+# 忽略VS Code配置目录
+.vscode/
+
+# 操作系统生成的文件
+# 忽略macOS的.DS_Store和Windows的Thumbs.db文件
+.DS_Store
+Thumbs.db
+
+# 运行时日志文件
+# 忽略所有.log文件和日志目录
+*.log
+logs/
+work/
+libs/
+
+# Derby数据库日志文件（Nacos内嵌数据库）
+# 忽略Derby数据库的日志文件
+derby.log
+
+# 临时文件
+# 忽略各种编辑器和系统生成的临时文件
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# 测试相关临时文件
+# 忽略测试脚本和JSON文件
+test-*.ps1
+test-*.json
+
+# JVM崩溃日志
+# 忽略Java虚拟机崩溃时生成的日志文件
+hs_err_pid*
+
+# Spring Boot DevTools
+# 忽略DevTools生成的jar文件
+.jar
+
+# 应用程序日志文件
+# 忽略应用程序生成的日志文件
+application*.log
+
+# 数据库文件
+# 忽略各种数据库文件
+*.db
+*.sqlite
+*.sqlite3
+
+# Redis数据库文件
+# 忽略Redis生成的dump文件
+dump.rdb
+
+# 环境配置文件（包含敏感信息）
+# 忽略环境配置文件，防止敏感信息泄露
+.env
+.env.local
+.env.*.local
+
+# 打包文件
+# 忽略各种打包格式的文件
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
